@@ -12,6 +12,45 @@ dist
 dist-ssr
 *.local
 
+# Environment variables and local credentials
+.env
+.env.*
+!.env.example
+!.env.sample
+.npmrc
+.pypirc
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+credentials.json
+service-account*.json
+serviceAccount*.json
+
+# Machine-local settings and deployment state
+.aws/
+.ssh/
+.codex/
+.agents/
+.wrangler/
+.vercel/
+.netlify/
+
+# Private data, backups, and generated reports
+/private/
+/backups/
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.sql
+*.bak
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -32,3 +32,19 @@ npm.cmd run preview -- --host 127.0.0.1
 
 The build goes into `dist/`. The classic app.js script is deliberately kept
 unbundled to preserve the supplied source.
+
+## Public repository
+
+Commit the site source, configuration, and `package-lock.json`. `.gitignore`
+excludes dependencies, builds, local environment files, credentials, private
+data folders, and generated reports. Any `.env.example` or `.env.sample` file
+must contain placeholders only.
+
+Everything in the browser's HTML, CSS, and JavaScript is publicly readable.
+Never put API keys, passwords, student records, or payment credentials in
+`index.html`, `public/`, or client code. Future services needing secrets must
+keep those secrets on a server. The existing progress data stays in the
+visitor's browser and is not stored in this repository.
+
+Before committing, review `git diff --cached` and `git status --short`.
+Ignore rules do not remove files already tracked or erase Git history.
