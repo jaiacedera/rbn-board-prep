@@ -61,3 +61,7 @@ test-results/
 *.njsproj
 *.sln
 *.sw?
+
+# Versioned database migrations are source files
+!database/migrations/*.sql
+/.tmp/

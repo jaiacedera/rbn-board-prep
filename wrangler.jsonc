@@ -2,6 +2,6 @@
   "name": "rbn-board-prep",
   "compatibility_date": "2026-10-14",
   "assets": {
-    "directory": "./dist"
+    "directory": "./frontend/dist"
   }
 }
