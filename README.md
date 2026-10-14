@@ -80,32 +80,41 @@ These integrations are planned and are not required to run the current prototype
 
 ## Run Locally
 
-Extract the website source into a folder. From the folder containing `index.html`, run:
+From the repository root, run:
 
 ```bash
-python -m http.server 8000
+npm ci
+npm run dev
 ```
 
-On Windows, if your Python command is `py`, use:
+To build and preview production assets:
 
 ```bash
-py -m http.server 8000
+npm run build
+npm run preview
 ```
 
-Open `http://localhost:8000` in your browser. No npm installation or build step is required for the current source. PWA features require a supported browser and a secure context, such as HTTPS or localhost; installation availability varies by browser.
+Open the URL printed by Vite. Verify PWA caching in the production preview, which includes the generated asset manifest. PWA features require HTTPS or localhost and a supported browser.
+
+## Cloudflare Deployment
+
+- Build: `npm run build`
+- Deploy: `npx wrangler deploy --assets ./dist`
+
+`wrangler.jsonc` explicitly configures static hosting from `dist/`. No Cloudflare auto-setup, Worker entry point, or Cloudflare Vite plugin is needed.
 
 ## Source Files
 
 | File | Purpose |
 | --- | --- |
 | `index.html` | Main document, navigation, footer, and dialog |
-| `style.css` | Maroon-and-gold theme and responsive layouts |
-| `app.js` | Pages, sample lesson, quiz, results, progress, and scripted tutor |
-| `manifest.webmanifest` | PWA name, icon, and display settings |
-| `sw.js` | Basic caching of the public prototype assets |
-| `icon.svg` | App icon |
+| `src/style.css` | Maroon-and-gold theme and responsive layouts |
+| `src/app.js` | Pages, lesson, quiz, progress, and scripted tutor |
+| `public/manifest.webmanifest` | PWA metadata |
+| `public/sw.js` | Caching of the prototype and generated bundles |
+| `public/icon.svg` | App icon |
 
-In the hosted source repository, these files are under `dist/`. The downloadable source ZIP places them at its root.
+Vite bundles the JS/CSS into `dist/assets/` and copies `public/` into `dist/`. The generated `asset-manifest.json` lets the service worker precache the hashed bundle filenames.
 
 ## Visual Identity
 
